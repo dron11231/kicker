@@ -1,0 +1,39 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: var(--border);
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--main-background);
+    }
+}
+
+.rowItem {
+    width: 100%;
+    padding: 16px;
+    border-left: var(--border);
+    border-right: var(--border);
+}
+
+.achievment {
+    border-color: var(--theme-color);
+    color: var(--theme-color);
+    background-color: #fff;
+    font-weight: 600;
+    min-width: 120px;
+    margin-bottom: 5px;
+    text-align: center;
+
+    &:hover {
+        scale: 1.05;
+    }
+}
+
+@media (max-width: 500px) {
+    .achievment {
+        min-width: 0;
+        font-size: 8px;
+    }
+}
