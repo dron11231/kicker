@@ -1,6 +1,6 @@
-import React from "react";
-import Header from "../Header";
-import s from "./style.module.scss";
+import Header from 'components/Header';
+import React from 'react';
+import s from './style.module.scss';
 
 const App: React.FC = () => {
   return (

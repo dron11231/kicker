@@ -1,3 +1,5 @@
+// Как увеличить допустимую ширину строки в eslint?
+
 {
     "env": {
         "browser": true,
@@ -24,6 +26,7 @@
         "prettier"
     ],
     "rules": {
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "max-len": ["error", { "code": 1200 }]
     }
 }

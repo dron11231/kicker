@@ -1,5 +1,5 @@
-import React from "react";
-import s from "./style.module.scss";
+import React from 'react';
+import s from './style.module.scss';
 
 interface ITableHeaderProps {
   titles: string[];

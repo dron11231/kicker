@@ -1,8 +1,8 @@
 export enum PlayerTypes {
-  NAME = "name",
-  RATE = "rate",
-  ACHIEVMENTS = "achievments",
-  ID = "id",
+  NAME = 'name',
+  RATE = 'rate',
+  ACHIEVMENTS = 'achievments',
+  ID = 'id'
 }
 
 export type Player = Record<string, string | string[] | number>;
