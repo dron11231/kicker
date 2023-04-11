@@ -20,8 +20,8 @@ const TableRow: React.FC<ITableRowProps> = (props) => {
 
   return (
     <div className={s.row}>
-      {rowItems.map((rowItem) => (
-        <div key={playerData.id} className={s.rowItem}>
+      {rowItems.map((rowItem, index) => (
+        <div key={index} className={s.rowItem}>
           {rowItem === PlayerTypes.ACHIEVMENTS ? (
             playerAchievments
           ) : (

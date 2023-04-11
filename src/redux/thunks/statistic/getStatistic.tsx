@@ -10,7 +10,9 @@ export const getStatistic = () => {
       dispatch(getPlayersStatistic.request());
       const result = await axios.get('http://localhost:8081/achivki/statistics/summary');
 
-      console.log(result);
+      if (result.data) {
+        dispatch(getPlayersStatistic.success(result.data));
+      }
     } catch {
       dispatch(getPlayersStatistic.failure());
     }

@@ -1,17 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Action, applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, compose, createStore } from 'redux';
 import App from './common/App';
 import './assets/styles/main.scss';
 import rootReducer from 'redux/reducers';
-import thunk, { ThunkAction } from 'redux-thunk';
-
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-// const composeEnhancers =
-//   (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-
-// const store = createStore(rootReducer, composeEnhancers());
+import thunk from 'redux-thunk';
 
 let mwModules = [thunk];
 
@@ -32,14 +26,11 @@ const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(rootReducer, reduxDevTools(middleware));
 
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root') as HTMLElement
 );
-
-export type RootStore = ReturnType<typeof rootReducer>;
-
-export type AppThunk<ReturnT = void> = ThunkAction<ReturnT, RootStore, unknown, Action<string>>;
