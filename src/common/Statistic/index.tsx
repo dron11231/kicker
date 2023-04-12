@@ -1,19 +1,15 @@
 import React, { useEffect } from 'react';
 import StatisticTable from './components/StatisticTable';
 import s from './style.module.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getStatistic } from 'redux/thunks/statistic/getStatistic';
-
-interface DataType {
-  key: string;
-  name: string;
-  age: number;
-  address: string;
-  achievments: string[];
-}
+import { getIsLoading, getPlayersStatistic } from 'redux/reducers/StatisticReducer/selectors';
 
 const Statistic: React.FC = () => {
   const dispatch = useDispatch();
+
+  const playersStatistic = useSelector(getPlayersStatistic);
+  const isLoading = useSelector(getIsLoading);
 
   useEffect(() => {
     dispatch(getStatistic());
@@ -22,7 +18,7 @@ const Statistic: React.FC = () => {
   return (
     <div className={s.statisticContainer}>
       {/* <Table columns={columns} dataSource={data} /> */}
-      <StatisticTable />
+      {playersStatistic ? <StatisticTable data={playersStatistic} /> : <span>loading...</span>}
     </div>
   );
 };

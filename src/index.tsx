@@ -34,3 +34,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root') as HTMLElement
 );
+
+export type RootReducer = ReturnType<typeof rootReducer>;

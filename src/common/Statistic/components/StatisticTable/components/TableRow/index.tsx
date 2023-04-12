@@ -1,20 +1,19 @@
 import { Tag } from 'antd';
 import React from 'react';
-import { IPlayerData } from '../../../../types';
-import { PlayerTypes } from '../../../../types';
+import { IPlayerData, PlayerTypes } from '../../../../types';
 import s from './style.module.scss';
 
 interface ITableRowProps {
-  playerData: IPlayerData;
+  itemData: IPlayerData;
 }
 
 const TableRow: React.FC<ITableRowProps> = (props) => {
-  const { playerData } = props;
+  const { itemData } = props;
 
-  const rowItems = Object.keys(playerData).filter((item) => item !== PlayerTypes.ID);
-  const playerAchievments = playerData.achievments.map((achievment) => (
-    <Tag className={s.achievment} key={achievment}>
-      {achievment}
+  const rowItems = Object.keys(itemData).filter((item) => item !== PlayerTypes.ID);
+  const playerAchievements = itemData.achievements.map((achievement) => (
+    <Tag className={s.achievment} key={achievement.name}>
+      {achievement?.name}
     </Tag>
   ));
 
@@ -22,10 +21,10 @@ const TableRow: React.FC<ITableRowProps> = (props) => {
     <div className={s.row}>
       {rowItems.map((rowItem, index) => (
         <div key={index} className={s.rowItem}>
-          {rowItem === PlayerTypes.ACHIEVMENTS ? (
-            playerAchievments
+          {rowItem === PlayerTypes.ACHIEVEMENTS ? (
+            playerAchievements
           ) : (
-            <span className={s.itemData}>{playerData[rowItem]}</span>
+            <span className={s.itemData}>{`${itemData[rowItem]}`}</span>
           )}
         </div>
       ))}

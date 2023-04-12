@@ -1,29 +1,24 @@
 import { ActionType, createReducer } from 'typesafe-actions';
 import * as a from './actions';
-
-export interface ITestPlayer {
-  name: string;
-  id: number;
-  rate: number;
-}
+import { IPlayerData } from 'common/Statistic/types';
 
 export interface IStatisticState {
-  playersStatistic: ITestPlayer[] | [];
-  loading: boolean;
+  playersStatistic: IPlayerData[];
+  isLoading: boolean;
 }
 
 const initialState: IStatisticState = {
   playersStatistic: [],
-  loading: false
+  isLoading: false
 };
 
 export const statisticReducer = createReducer<IStatisticState, ActionType<typeof a>>(initialState)
   .handleAction(a.getPlayersStatistic.request, (state) => ({
     ...state,
-    loading: true
+    isLoading: true
   }))
   .handleAction(a.getPlayersStatistic.success, (state, action) => ({
     ...state,
     playersStatistic: action.payload,
-    loading: false
+    isLoading: false
   }));

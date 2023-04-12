@@ -1,15 +1,17 @@
 export enum PlayerTypes {
   NAME = 'name',
   RATE = 'rate',
-  ACHIEVMENTS = 'achievments',
+  ACHIEVEMENTS = 'achievements',
   ID = 'id'
 }
 
-export type Player = Record<string, string | string[] | number>;
+export interface IAchievment {
+  name: string;
+}
 
-export interface IPlayerData extends Player {
+export interface IPlayerData {
   name: string;
   rate: number | string;
-  achievments: string[];
+  achievements: IAchievment[];
   id: number | string;
 }
