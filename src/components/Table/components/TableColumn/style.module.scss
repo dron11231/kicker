@@ -1,0 +1,32 @@
+.tableColumn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:not(:last-child) {
+    border-right: 1px solid black;
+  }
+}
+
+.columnRow {
+  padding: 10px;
+  word-wrap: break-word;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--hover-background);
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px solid black;
+  }
+}
+
+.columnTitle {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--main-background);
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom: 2px solid black;
+}

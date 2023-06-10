@@ -1,0 +1,1 @@
+export { TimeIcon } from './TimeIcon';

@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
-import App from './common/App';
+import { BrowserRouter } from 'react-router-dom';
 import './assets/styles/main.scss';
 import rootReducer from 'redux/reducers';
 import thunk from 'redux-thunk';
+import AppRoutes from 'routes/AppRoutes';
 
 let mwModules = [thunk];
 
@@ -29,7 +30,9 @@ const store = createStore(rootReducer, reduxDevTools(middleware));
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root') as HTMLElement

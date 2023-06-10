@@ -1,0 +1,58 @@
+.avatarWrapper {
+  background-color: #54def5 /* #54f55c */;
+  border: 1px solid #4106e4;
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatarImage {
+  margin-bottom: -10px;
+}
+
+.playerInfoHeader {
+  display: flex;
+  gap: 15px;
+  border-bottom: 1px solid #4106e4;
+  padding-bottom: 12px;
+}
+
+.basicPlayerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.playerName {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.playerInfoButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.infoButtonsPadding {
+  padding-bottom: 12px;
+}
+
+.achievementsButton {
+  background: #fff;
+  color: orange;
+  border: 1px solid orange;
+  font-size: 16px;
+  box-shadow: 1px 1px 3px -1px rgba(0, 0, 0, 0.26);
+}
+
+.historyButton {
+  background: none;
+  border: 1px solid #00bd00 !important;
+  padding: 0;
+}
