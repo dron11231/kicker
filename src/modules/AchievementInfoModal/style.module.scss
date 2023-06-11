@@ -1,0 +1,29 @@
+.achievementInfoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line {
+  width: 80px;
+  height: 1px;
+  background-color: #f6ad26;
+
+  &:first-of-type {
+    margin-right: 5px;
+  }
+
+  &:last-of-type {
+    margin-left: 5px;
+  }
+}
+
+.achievementName {
+  text-align: center;
+  font-size: 18px;
+}
+
+.achievementDescription {
+  display: block;
+  text-align: center;
+}

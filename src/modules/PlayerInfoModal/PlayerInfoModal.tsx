@@ -10,6 +10,7 @@ import { TimeIcon } from 'Icons';
 import s from './style.module.scss';
 import { PlayerAchievements } from './components';
 import classNames from 'classnames';
+import { getUserData } from 'redux/reducers/AppSettingsReducer/selectors';
 
 interface IProps {
   playerId: number | string;
@@ -19,12 +20,15 @@ interface IProps {
 export const PlayerInfoModal: FC<IProps> = (props) => {
   const { playerId, onClose } = props;
 
+  const { isMobile } = useSelector(getUserData);
   const playersStatistic = useSelector(getPlayersStatistic);
   const [isAchievementsOpen, setAchievementsOpen] = useState(false);
 
   const playerData = playersStatistic.find((player) => player.id === playerId);
 
   const toggleAchievementsOpen = () => setAchievementsOpen((previousState) => !previousState);
+
+  console.log('mobile', isMobile);
 
   return (
     <Modal title="Карточка игрока" onClose={onClose}>
@@ -44,9 +48,15 @@ export const PlayerInfoModal: FC<IProps> = (props) => {
           <Button onClick={toggleAchievementsOpen} className={s.achievementsButton}>
             {isAchievementsOpen ? 'Скрыть' : 'Показать'} достижения...
           </Button>
-          <IconButton className={s.historyButton} title="Показать историю игр">
-            <TimeIcon fill="#00bd00" />
-          </IconButton>
+          {isMobile ? (
+            <IconButton className={s.historyButton} title="Показать историю игр">
+              <TimeIcon fill="#00bd00" />
+            </IconButton>
+          ) : (
+            <Button className={s.historyButtonDesktop} icon={<TimeIcon fill="#00bd00" />}>
+              История игр
+            </Button>
+          )}
         </div>
         {isAchievementsOpen && <PlayerAchievements achievements={playerData.achievements} />}
       </div>
