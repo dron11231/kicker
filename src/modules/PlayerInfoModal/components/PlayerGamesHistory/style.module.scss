@@ -1,23 +1,32 @@
-.achievementsList {
+.gamesList {
   margin-top: 12px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
   border-top: #4106e4 1px solid;
   padding-top: 8px;
-  gap: 8px;
 }
 
-.achievement {
+.game {
   display: flex;
   align-items: center;
   gap: 10px;
-  border: 2px orange solid;
   color: black;
   border-radius: 4px;
   padding: 5px 10px;
 }
 
-.achievementText {
+.winGame {
+  color: #00bd00;
+  border: 2px solid #00bd00;
+}
+
+.loseGame {
+  color: #d70d0d;
+  border: 2px solid #d70d0d;
+}
+
+.gameText {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

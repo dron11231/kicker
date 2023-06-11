@@ -11,11 +11,23 @@ import s from './style.module.scss';
 import { PlayerAchievements } from './components';
 import classNames from 'classnames';
 import { getUserData } from 'redux/reducers/AppSettingsReducer/selectors';
+import {
+  IGameResults,
+  PlayerGamesHistory
+} from './components/PlayerGamesHistory/PlayerGamesHistory';
 
 interface IProps {
   playerId: number | string;
   onClose: () => void;
 }
+
+const mockHistoryGames: IGameResults[] = [
+  { win: true, firstTeamScore: 6, secondTeamScore: 4 },
+  { win: false, firstTeamScore: 3, secondTeamScore: 6 },
+  { win: true, firstTeamScore: 6, secondTeamScore: 5 },
+  { win: false, firstTeamScore: 2, secondTeamScore: 6 },
+  { win: true, firstTeamScore: 6, secondTeamScore: 3 }
+];
 
 export const PlayerInfoModal: FC<IProps> = (props) => {
   const { playerId, onClose } = props;
@@ -23,10 +35,12 @@ export const PlayerInfoModal: FC<IProps> = (props) => {
   const { isMobile } = useSelector(getUserData);
   const playersStatistic = useSelector(getPlayersStatistic);
   const [isAchievementsOpen, setAchievementsOpen] = useState(false);
+  const [isPlayerHistoryOpen, setPlayerHistoryOpen] = useState(false);
 
   const playerData = playersStatistic.find((player) => player.id === playerId);
 
   const toggleAchievementsOpen = () => setAchievementsOpen((previousState) => !previousState);
+  const togglePlayerHistoryOpen = () => setPlayerHistoryOpen((previousState) => !previousState);
 
   console.log('mobile', isMobile);
 
@@ -49,16 +63,25 @@ export const PlayerInfoModal: FC<IProps> = (props) => {
             {isAchievementsOpen ? 'Скрыть' : 'Показать'} достижения...
           </Button>
           {isMobile ? (
-            <IconButton className={s.historyButton} title="Показать историю игр">
+            <IconButton
+              onClick={togglePlayerHistoryOpen}
+              className={s.historyButton}
+              title="Показать историю игр"
+            >
               <TimeIcon fill="#00bd00" />
             </IconButton>
           ) : (
-            <Button className={s.historyButtonDesktop} icon={<TimeIcon fill="#00bd00" />}>
+            <Button
+              onClick={togglePlayerHistoryOpen}
+              className={s.historyButtonDesktop}
+              icon={<TimeIcon fill="#00bd00" />}
+            >
               История игр
             </Button>
           )}
         </div>
         {isAchievementsOpen && <PlayerAchievements achievements={playerData.achievements} />}
+        {isPlayerHistoryOpen && <PlayerGamesHistory gamesHistory={mockHistoryGames} />}
       </div>
     </Modal>
   );
